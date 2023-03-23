@@ -19,23 +19,28 @@ export default function NavBar({ user }: { user: User | null }) {
 				<Navbar.Toggle aria-controls="navbar" />
 				<Navbar.Collapse id="navbar" className="justify-content-end">
 					<Nav>
+						<Nav.Link href="/">Crossword</Nav.Link>
 						<Nav.Link href="/leaderboard">Leaderboard</Nav.Link>
-						<NavDropdown
-							title={user ? user.name : 'Login'}
-							onClick={() => {
-								if (!user) signIn();
-							}}
-							align="end"
-						>
-							<NavDropdown.Item href="/profile">Your Profile</NavDropdown.Item>
-							<NavDropdown.Item
+						{user ? (
+							<NavDropdown title={user ? user.name : 'Login'} align="end">
+								<NavDropdown.Item href="/profile">Your Profile</NavDropdown.Item>
+								<NavDropdown.Item
+									onClick={() => {
+										signOut();
+									}}
+								>
+									Sign Out
+								</NavDropdown.Item>
+							</NavDropdown>
+						) : (
+							<Nav.Link
 								onClick={() => {
-									signOut();
+									signIn();
 								}}
 							>
-								Sign Out
-							</NavDropdown.Item>
-						</NavDropdown>
+								Login
+							</Nav.Link>
+						)}
 					</Nav>
 				</Navbar.Collapse>
 			</Container>
