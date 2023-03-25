@@ -1,8 +1,8 @@
-import { User } from "next-auth";
-import { signIn, signOut } from "next-auth/react";
-import { FiLogOut } from "react-icons/fi";
-import { useTheme } from "next-themes";
-import Link from "next/link";
+import { User } from 'next-auth';
+import { signIn, signOut } from 'next-auth/react';
+import { FiLogOut } from 'react-icons/fi';
+import { useTheme } from 'next-themes';
+import Link from 'next/link';
 
 export default function NavBar({ user }: { user: User | null }) {
 	const { theme, setTheme } = useTheme();
@@ -31,7 +31,7 @@ export default function NavBar({ user }: { user: User | null }) {
 					<button
 						className="text-white px-2 font-medium text-lg py-1"
 						onClick={() => {
-							setTheme(theme === "light" ? "dark" : "light");
+							setTheme(theme === 'light' ? 'dark' : 'light');
 						}}
 					>
 						Change Theme
@@ -48,7 +48,7 @@ export default function NavBar({ user }: { user: User | null }) {
 						<>
 							<a href="/profile" className=" ">
 								<span className="text-white text-lg">
-									{user ? user.name : "Login"}
+									{user ? user.name : 'Login'}
 								</span>
 							</a>
 							<button className="px-3">
