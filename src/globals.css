@@ -3,14 +3,14 @@
 @tailwind utilities;
 
 body {
-  margin: 0px;
-  padding: 0px;
+	background-color: white;
 }
 
 a {
-  text-decoration: none !important;
+	text-decoration: none !important;
 }
 
 * {
-  /* font-family: Rockwell, 'Rockwell Nova', 'Roboto Slab', 'DejaVu Serif', 'Sitka Small', serif; */
+	/* font-family: Optima, Candara, "Noto Sans", source-sans-pro, sans-serif; */
+	font-family: Avenir, 'Avenir Next LT Pro', Montserrat, Corbel, 'URW Gothic', source-sans-pro, sans-serif;
 }

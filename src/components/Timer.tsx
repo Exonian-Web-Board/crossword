@@ -14,12 +14,12 @@ function Timer({ start }: { start: boolean }) {
   }, [time]);
 
   return (
-    <span>
+    <>
       {new Date(time * 1000).toISOString().substring(14, 19)}{" "}
-      <div className="h6">
+      <p>
         {completed && "*you've completed today's puzzle"}
-      </div>
-    </span>
+      </p>
+    </>
   );
 }
 

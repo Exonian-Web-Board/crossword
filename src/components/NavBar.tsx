@@ -1,49 +1,15 @@
 import { User } from "next-auth";
 import { signIn, signOut } from "next-auth/react";
 import { FiLogOut } from "react-icons/fi";
+import { useTheme } from "next-themes";
+import Link from "next/link";
 
 export default function NavBar({ user }: { user: User | null }) {
+	const { theme, setTheme } = useTheme();
 	return (
 		<>
-			{/* <a href="/">
-				<img
-					alt=""
-					src="/logo.jpg"
-					width="30"
-					height="30"
-				/>
-				<span>The Exonian Crossword</span>
-			</a>
-			<button aria-controls="navbar" />
-			<div id="navbar" className="justify-content-end">
-				<div>
-					<a href="/">Crossword</a>
-					<a href="/leaderboard">Leaderboard</a>
-					{user ? (
-						<div>
-							<h1>{user ? user.name : "Login"}</h1>
-							<a href="/profile">Your Profile</a>
-							<button
-								onClick={() => {
-									signOut();
-								}}
-							>
-								Sign Out
-							</button>
-						</div>
-					) : (
-						<button
-							onClick={() => {
-								signIn();
-							}}
-						>
-							Login
-						</button>
-					)}
-				</div>
-			</div> */}
-			<div className="bg-black flex items-center justify-between px-2 py-1">
-				<div>
+			<div className="bg-black flex items-center justify-between px-4 py-1">
+				<div className="flex items-end">
 					<a href="/" className="  text-white">
 						<div className="h-12 flex items-center">
 							<img
@@ -51,17 +17,33 @@ export default function NavBar({ user }: { user: User | null }) {
 								alt="Exonian Logo"
 								className="h-full"
 							/>
-							<h1 className="font-extrabold p-2">Crossword</h1>
+							<span className="font-bold text-4xl pr-2">
+								Crossword
+							</span>
 						</div>
 					</a>
-				</div>
-				<div className="flex items-center">
 					<a
 						href="/leaderboard"
-						className="  text-white font-medium text-lg p-3"
+						className="text-white px-2 font-medium text-lg py-1"
 					>
-						Leaderboard 🏆
+						Leaderboard
 					</a>
+					<button
+						className="text-white px-2 font-medium text-lg py-1"
+						onClick={() => {
+							setTheme(theme === "light" ? "dark" : "light");
+						}}
+					>
+						Change Theme
+					</button>
+					<Link
+						href="#footer"
+						className="text-white px-2 font-medium text-lg py-1"
+					>
+						About
+					</Link>
+				</div>
+				<div className="flex items-center">
 					{user ? (
 						<>
 							<a href="/profile" className=" ">
@@ -80,7 +62,7 @@ export default function NavBar({ user }: { user: User | null }) {
 						</>
 					) : (
 						<button
-							className="text-white border-none"
+							className="text-white font-medium border-none"
 							onClick={() => {
 								signIn();
 							}}

@@ -1,14 +1,14 @@
 import { SessionProvider } from "next-auth/react";
+import { ThemeProvider } from "next-themes";
 import type { AppProps } from "next/app";
-import { SSRProvider } from "react-bootstrap";
 import "../globals.css";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <SSRProvider>
-      <SessionProvider>
+    <SessionProvider>
+      <ThemeProvider attribute="class">
         <Component {...pageProps} />
-      </SessionProvider>
-    </SSRProvider>
+      </ThemeProvider>
+    </SessionProvider>
   );
 }

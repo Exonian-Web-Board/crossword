@@ -10,6 +10,7 @@ import { CrosswordProviderImperative } from "@jaredreisinger/react-crossword";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import { useSession } from "next-auth/react";
 import { useRef, useState } from "react";
+import Footer from "@/components/Footer"
 
 export default function CrosswordPage({
   crossword,
@@ -22,14 +23,15 @@ export default function CrosswordPage({
   return (
     <>
       <NavBar user={session ? session.user : null} />
-      <div>
-        <h1 className="text-center items-center">
+      <div className="border-b border-neutral-200 py-4 px-5">
+        <span className="text-5xl pl-5 font-black items-center border-l-8 border-black">
           {JSON.parse(crossword).title}
-        </h1>
+        </span>
+        <span className="px-3 text-lg font-light">
+        C. Wu '24 and D. Zhang '25
+        </span>
       </div>
-      <hr />
       <GameNav correct={correct} crosswordRef={crosswordRef} />
-      <hr />
       {correct && (
         <>
           <CongratsModal show={modalShow} onHide={() => setModalShow(false)} />
@@ -42,6 +44,7 @@ export default function CrosswordPage({
         setModalShow={setModalShow}
         cRef={crosswordRef}
       />
+      <Footer/>
     </>
   );
 }

@@ -50,7 +50,7 @@ export default function CrosswordComponent({
   );
 
   return (
-    <>
+    <div className="flex flex-row justify-center py-12">
       <CrosswordProvider
         data={ipuz}
         onCrosswordCorrect={(isCorrect) => {
@@ -77,10 +77,16 @@ export default function CrosswordComponent({
         onCellChange={onCellChange}
         ref={cRef}
       >
-        <CrosswordGrid />
-        <DirectionClues direction="across" />
-        <DirectionClues direction="down" />
+        <div className="w-2/5 px-5">
+          <CrosswordGrid />
+        </div>
+        <div className="w-1/5 px-2 text-sm">
+          <DirectionClues direction="across" />
+        </div>
+        <div className="w-1/5 px-2 text-sm">
+          <DirectionClues direction="down" />
+        </div>
       </CrosswordProvider>
-    </>
+    </div>
   );
 }
