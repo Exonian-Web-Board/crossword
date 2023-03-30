@@ -8,12 +8,12 @@ export default function NavBar({ user }: { user: User | null }) {
 	const { theme, setTheme } = useTheme();
 	return (
 		<>
-			<div className="bg-black flex items-center justify-between px-4 py-1">
+			<div className="bg-midnight flex items-center justify-between px-4 py-1">
 				<div className="flex items-end">
 					<a href="/" className="  text-white">
 						<div className="h-12 flex items-center">
 							<img
-								src="/logo.jpg"
+								src="/logo.png"
 								alt="Exonian Logo"
 								className="h-full"
 							/>
@@ -37,7 +37,7 @@ export default function NavBar({ user }: { user: User | null }) {
 						Change Theme
 					</button>
 					<Link
-						href="#footer"
+						href="/#footer"
 						className="text-white px-2 font-medium text-lg py-1"
 					>
 						About
@@ -64,7 +64,7 @@ export default function NavBar({ user }: { user: User | null }) {
 						<button
 							className="text-white font-medium border-none"
 							onClick={() => {
-								signIn();
+								signIn('azure-ad');
 							}}
 						>
 							Login

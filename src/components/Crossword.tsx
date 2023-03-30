@@ -78,7 +78,7 @@ export default function CrosswordComponent({
 				ref={cRef}
 			>
 				<div className="w-2/5 px-5">
-					<CrosswordGrid />
+					<CrosswordGrid/>
 				</div>
 				<div className="w-1/5 px-2 text-sm">
 					<DirectionClues direction="across" />

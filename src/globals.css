@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-	background-color: white;
+	@apply bg-white dark:bg-bg-color dark:text-dark-text
 }
 
 a {
@@ -12,6 +12,12 @@ a {
 
 * {
 	/* font-family: Optima, Candara, "Noto Sans", source-sans-pro, sans-serif; */
-	font-family: Avenir, 'Avenir Next LT Pro', Montserrat, Corbel, 'URW Gothic',
-		source-sans-pro, sans-serif;
+	/* font-family: Avenir, 'Avenir Next LT Pro', Montserrat, Corbel, 'URW Gothic',
+		source-sans-pro, sans-serif; */
+	/* font-family: Rockwell, 'Rockwell Nova', 'Roboto Slab', 'DejaVu Serif', 'Sitka Small', serif; */
+	font-family: Didot, 'Bodoni MT', 'Noto Serif Display', 'URW Palladio L', P052, Sylfaen, serif;
+}
+
+div h3.header {
+	@apply font-extrabold
 }

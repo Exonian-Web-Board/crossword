@@ -3,12 +3,12 @@ export default function Footer() {
 		<>
 			<div
 				id="footer"
-				className="flex border-t border-neutral-200 items-center justify-between px-2 py-4"
+				className="flex border-t border-neutral-200 dark:border-neutral-700 items-center justify-between px-2 py-4"
 			>
 				<img
-					src="/logo.jpg"
+					src="/logo.png"
 					alt="Exonian Logo"
-					className="invert h-32"
+					className="h-32"
 				/>
 				<div className="w-1/2">
 					<h5 className="text-lg">About The Exonian Crossword</h5>

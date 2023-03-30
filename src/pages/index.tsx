@@ -23,8 +23,8 @@ export default function CrosswordPage({
 	return (
 		<>
 			<NavBar user={session ? session.user : null} />
-			<div className="border-b border-neutral-200 py-4 px-5">
-				<span className="text-5xl pl-5 font-black items-center border-l-8 border-black">
+			<div className="border-b border-neutral-200 dark:border-neutral-700 py-4 px-5">
+				<span className="text-5xl pl-5 font-black items-center border-l-8 border-black dark:border-neutral-500">
 					{JSON.parse(crossword).title}
 				</span>
 				<span className="px-3 text-lg font-light">
