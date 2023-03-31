@@ -3,15 +3,15 @@ export default function Footer() {
 		<>
 			<div
 				id="footer"
-				className="flex border-t border-neutral-200 dark:border-neutral-700 items-center justify-between px-2 py-4"
+				className="flex border-t border-neutral-200 dark:border-neutral-700 transition-colors items-center justify-between px-2 py-4"
 			>
 				<img
 					src="/logo.png"
 					alt="Exonian Logo"
-					className="h-32"
+					className="h-32 invert dark:invert-0 transition-all"
 				/>
 				<div className="w-1/2">
-					<h5 className="text-lg">About The Exonian Crossword</h5>
+					<h5 className="text-lg font-semibold">About The Exonian Crossword</h5>
 					<p className="text-sm">
 						The Exonian Crossword was launched in 2023 by the 145th
 						Exonian Web Board (developed by Byran Huang '25, Eric Li
@@ -22,7 +22,7 @@ export default function Footer() {
 						feedback:
 						<a
 							href="mailto:yhuang4@exeter.edu"
-							className="text-gray-500"
+							className="text-gray-500 dark:text-neutral-400"
 						>
 							{' '}
 							yhuang4@exeter.edu
@@ -30,7 +30,7 @@ export default function Footer() {
 						,
 						<a
 							href="mailto:xli5@exeter.edu"
-							className="text-gray-500"
+							className="text-gray-500 dark:text-neutral-400"
 						>
 							{' '}
 							xli5@exeter.edu
@@ -38,7 +38,7 @@ export default function Footer() {
 						,
 						<a
 							href="mailto:cawu@exeter.edu"
-							className="text-gray-500"
+							className="text-gray-500 dark:text-neutral-400"
 						>
 							{' '}
 							cawu@exeter.edu

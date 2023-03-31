@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-	@apply bg-white dark:bg-bg-color dark:text-dark-text
+	@apply bg-white dark:bg-bg-color dark:text-dark-text transition-colors;
 }
 
 a {
@@ -19,5 +19,13 @@ a {
 }
 
 div h3.header {
-	@apply font-extrabold
+	@apply font-extrabold pb-1 font-sans
+}
+
+div div.clue{
+	@apply pl-2 pt-1 font-sans
+}
+
+.crossword * {
+	@apply font-sans font-light
 }
