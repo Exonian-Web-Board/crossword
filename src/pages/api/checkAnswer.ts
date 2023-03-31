@@ -9,6 +9,8 @@ export default async function handler(
 	req: NextApiRequest,
 	res: NextApiResponse
 ) {
+	await dbConnect();
+
 	const session = await getServerSession(req, res, authOptions);
 
 	const { guesses } = req.body;
