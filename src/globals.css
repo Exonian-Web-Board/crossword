@@ -15,17 +15,17 @@ a {
 	/* font-family: Avenir, 'Avenir Next LT Pro', Montserrat, Corbel, 'URW Gothic',
 		source-sans-pro, sans-serif; */
 	/* font-family: Rockwell, 'Rockwell Nova', 'Roboto Slab', 'DejaVu Serif', 'Sitka Small', serif; */
-	font-family: Didot, 'Bodoni MT', 'Noto Serif Display', 'URW Palladio L', P052, Sylfaen, serif;
+	/* font-family: Didot, 'Bodoni MT', 'Noto Serif Display', 'URW Palladio L', P052, Sylfaen, serif; */
 }
 
 div h3.header {
-	@apply font-extrabold pb-1 font-sans
+	@apply font-extrabold pb-1 font-sans;
 }
 
-div div.clue{
-	@apply pl-2 pt-1 font-sans
+div div.clue {
+	@apply pl-2 pt-1 font-sans;
 }
 
 .crossword * {
-	@apply font-sans font-light
+	@apply font-sans font-light;
 }

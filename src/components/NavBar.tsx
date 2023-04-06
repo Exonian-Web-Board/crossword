@@ -4,32 +4,44 @@ import { FiLogOut } from 'react-icons/fi';
 import { HiSun, HiMoon } from 'react-icons/hi';
 import { useTheme } from 'next-themes';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 export default function NavBar({ user }: { user: User | null }) {
-	const { theme, setTheme } = useTheme();
+	const [mounted, setMounted] = useState(false);
+	const { theme, systemTheme, setTheme } = useTheme();
+
+	useEffect(() => {
+		setMounted(true);
+	}, []);
+
+	if (!mounted) {
+		return null;
+	}
+
+	console.log(systemTheme + ' ' + theme);
 
 	return (
 		<>
 			<div className="bg-midnight flex items-center justify-between px-4 py-1">
 				<div className="flex items-end">
-					<a href="/" className="  text-white">
+					<Link href="/">
 						<div className="h-12 flex items-center">
 							<img
 								src="/logo.png"
 								alt="Exonian Logo"
 								className="h-full"
 							/>
-							<span className="font-bold text-4xl pr-2">
+							<span className="font-bold text-4xl pr-2 text-white">
 								Crossword
 							</span>
 						</div>
-					</a>
-					<a
+					</Link>
+					<Link
 						href="/leaderboard"
 						className="text-white px-2 font-medium text-lg py-1"
 					>
 						Leaderboard
-					</a>
+					</Link>
 					<Link
 						href="/#footer"
 						className="text-white px-2 font-medium text-lg py-1"
@@ -43,7 +55,11 @@ export default function NavBar({ user }: { user: User | null }) {
 								setTheme(theme === 'light' ? 'dark' : 'light');
 							}}
 						>
-							{theme === 'dark' ? <HiSun className="animate__animated animate__fadeIn" /> : <HiMoon className="animate__animated animate__fadeIn" />}
+							{theme == 'dark' ? (
+								<HiSun className="animate__animated animate__fadeIn" />
+							) : (
+								<HiMoon className="animate__animated animate__fadeIn" />
+							)}
 						</button>
 					</div>
 				</div>

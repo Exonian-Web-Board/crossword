@@ -77,8 +77,11 @@ export default function CrosswordComponent({
 				onCellChange={onCellChange}
 				ref={cRef}
 			>
-				<div className="w-2/5 px-5 animate__animated animate__fadeIn" style={{animationDuration: "1500ms"}}>
-					<CrosswordGrid/>
+				<div
+					className="w-2/5 px-5 animate__animated animate__fadeIn"
+					style={{ animationDuration: '1500ms' }}
+				>
+					<CrosswordGrid />
 				</div>
 				<div className="w-1/5 px-2 text-sm">
 					<DirectionClues direction="across" />
