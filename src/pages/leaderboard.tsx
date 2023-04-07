@@ -2,13 +2,13 @@ import LeaderBoard from '@/components/Leaderboard';
 import NavBar from '@/components/NavBar';
 import dbConnect from '@/lib/mongoose';
 import { User } from '@/models/User';
-import { GetStaticProps, InferGetStaticPropsType } from 'next';
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import { useSession } from 'next-auth/react';
 import { Container, Stack } from 'react-bootstrap';
 
 export default function LeaderboardPage({
 	leaderboard,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
 	const { data: session } = useSession();
 
 	return (
@@ -22,7 +22,7 @@ export default function LeaderboardPage({
 	);
 }
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
 	await dbConnect();
 
 	const leaderboard = await User.find(

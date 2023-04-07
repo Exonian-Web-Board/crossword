@@ -1,21 +1,20 @@
 import CongratsModal from '@/components/CongratsModal';
 import CrosswordComponent from '@/components/Crossword';
+import Footer from '@/components/Footer';
 import GameNav from '@/components/GameNav';
 import NavBar from '@/components/NavBar';
-import { useLocalStorage } from '@/hooks/useLocalStorage';
 import dbConnect from '@/lib/mongoose';
 import { Crossword } from '@/models/Crossword';
 import { User } from '@/models/User';
 import { CrosswordProviderImperative } from '@jaredreisinger/react-crossword';
-import { GetStaticProps, InferGetStaticPropsType } from 'next';
+import 'animate.css';
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import { useSession } from 'next-auth/react';
 import { useRef, useState } from 'react';
-import Footer from '@/components/Footer';
-import 'animate.css';
 
 export default function CrosswordPage({
 	crossword,
-}: InferGetStaticPropsType<typeof getServerSideProps>) {
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
 	const { data: session } = useSession();
 	const [correct, setCorrect] = useState(false);
 	const [modalShow, setModalShow] = useState(false);
@@ -62,7 +61,7 @@ export default function CrosswordPage({
 	);
 }
 
-export const getServerSideProps: GetStaticProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
 	await dbConnect();
 
 	const crossword = await Crossword.findOne({}, {}, { sort: { date: -1 } });
