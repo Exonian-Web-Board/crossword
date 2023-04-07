@@ -4,6 +4,7 @@ const CrosswordSchema = new Schema<CrosswordInterface>({
 	date: { type: Date, required: true },
 	title: { type: String, required: true },
 	solution: [[String]],
+	authors: [String],
 	clues: {
 		Across: [[Schema.Types.Mixed]],
 		Down: [[Schema.Types.Mixed]],
@@ -15,6 +16,7 @@ const CrosswordSchema = new Schema<CrosswordInterface>({
 interface CrosswordInterface extends Document {
 	date: Date;
 	title: string;
+	authors: string[];
 	solution: string[][];
 	clues: {
 		Across: Array<[number, string]>;

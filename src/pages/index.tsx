@@ -29,9 +29,9 @@ export default function CrosswordPage({
 						? JSON.parse(crossword).title
 						: 'No Crosswords Yet'}
 				</span>
-				<br className="md:hidden"/>
+				<br className="md:hidden" />
 				<span className="md:px-3 md:py-0 py-2 md:text-lg text-base font-light">
-					C. Wu '24 and D. Zhang '25
+					{JSON.parse(crossword).authors}
 				</span>
 			</div>
 			<GameNav correct={correct} crosswordRef={crosswordRef} />
