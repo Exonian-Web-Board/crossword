@@ -15,7 +15,7 @@ import 'animate.css';
 
 export default function CrosswordPage({
 	crossword,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+}: InferGetStaticPropsType<typeof getServerSideProps>) {
 	const { data: session } = useSession();
 	const [correct, setCorrect] = useState(false);
 	const [modalShow, setModalShow] = useState(false);
@@ -62,7 +62,7 @@ export default function CrosswordPage({
 	);
 }
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getServerSideProps: GetStaticProps = async (context) => {
 	await dbConnect();
 
 	const crossword = await Crossword.findOne({}, {}, { sort: { date: -1 } });

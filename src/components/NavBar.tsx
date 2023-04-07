@@ -18,8 +18,6 @@ export default function NavBar({ user }: { user: User | null }) {
 		return null;
 	}
 
-	console.log(systemTheme + ' ' + theme);
-
 	return (
 		<>
 			<div className="bg-midnight flex items-center justify-between px-4 py-1">

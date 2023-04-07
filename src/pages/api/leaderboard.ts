@@ -7,7 +7,5 @@ export default async function handler(_: NextApiRequest, res: NextApiResponse) {
 		{ sort: { completed: -1 } }
 	).select('name completed today');
 
-	console.log(users);
-
 	return res.status(200).json(users);
 }

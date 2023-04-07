@@ -54,25 +54,28 @@ export default function CrosswordComponent({
 			<CrosswordProvider
 				data={ipuz}
 				onCrosswordCorrect={(isCorrect) => {
-					setCorrect(isCorrect);
+					if (isCorrect) {
+						setCorrect(isCorrect);
 
-					if (localStorage.getItem('completed') === 'true') return;
+						if (localStorage.getItem('completed') === 'true')
+							return;
 
-					const requestOptions = {
-						method: 'POST',
-						headers: { 'Content-Type': 'application/json' },
-						body: JSON.stringify({
-							guesses,
-							time: localStorage.getItem('time'),
-						}),
-					};
+						const requestOptions = {
+							method: 'POST',
+							headers: { 'Content-Type': 'application/json' },
+							body: JSON.stringify({
+								guesses,
+								time: localStorage.getItem('time'),
+							}),
+						};
 
-					fetch('/api/checkAnswer', requestOptions);
+						fetch('/api/checkAnswer', requestOptions);
 
-					localStorage.setItem('completed', 'true');
-					localStorage.setItem('timerStop', 'true');
+						localStorage.setItem('completed', 'true');
+						localStorage.setItem('timerStop', 'true');
 
-					setModalShow(true);
+						setModalShow(true);
+					}
 				}}
 				onCellChange={onCellChange}
 				ref={cRef}
