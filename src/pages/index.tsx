@@ -46,7 +46,6 @@ export default function CrosswordPage({
 			{crossword !== 'null' ? (
 				<CrosswordComponent
 					data={crossword}
-					correct={correct}
 					setCorrect={setCorrect}
 					setModalShow={setModalShow}
 					cRef={crosswordRef}
@@ -62,7 +61,7 @@ export default function CrosswordPage({
 	);
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async () => {
 	await dbConnect();
 
 	const crossword = await Crossword.findOne({}, {}, { sort: { date: -1 } });

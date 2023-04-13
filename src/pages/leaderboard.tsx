@@ -22,7 +22,7 @@ export default function LeaderboardPage({
 	);
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async () => {
 	await dbConnect();
 
 	const leaderboard = await User.find(

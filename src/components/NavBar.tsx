@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 
 export default function NavBar({ user }: { user: User | null }) {
 	const [mounted, setMounted] = useState(false);
-	const { theme, systemTheme, setTheme } = useTheme();
+	const { theme, setTheme } = useTheme();
 
 	useEffect(() => {
 		setMounted(true);

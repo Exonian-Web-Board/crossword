@@ -10,13 +10,11 @@ import { useTheme } from 'next-themes';
 
 export default function CrosswordComponent({
 	data,
-	correct,
 	setCorrect,
 	setModalShow,
 	cRef,
 }: {
 	data: string;
-	correct: boolean;
 	setCorrect: (isCorrect: boolean) => void;
 	setModalShow: (isCorrect: boolean) => void;
 	cRef: Ref<CrosswordProviderImperative>;

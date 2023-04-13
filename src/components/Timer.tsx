@@ -15,8 +15,8 @@ function Timer({ start }: { start: boolean }) {
 
 	return (
 		<>
-			{new Date(time * 1000).toISOString().substring(14, 19)}{' '}
-			<p>{completed && "*you've completed today's puzzle"}</p>
+			{new Date(time * 1000).toISOString().substring(14, 19)}&nbsp;
+			<p>{completed && "*You've completed today's puzzle"}</p>
 		</>
 	);
 }
