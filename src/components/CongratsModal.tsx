@@ -69,13 +69,6 @@ export default function CongratsModal(props: {
 									</div>
 								</div>
 								<div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-									<button
-										type="button"
-										className="inline-flex w-full justify-center rounded-md bg-slate-800 transition-colors px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-slate-700 sm:ml-3 sm:w-auto"
-										onClick={props.onHide}
-									>
-										Close
-									</button>
 									<a href="/leaderboard">
 										<button
 											type="button"
@@ -86,7 +79,6 @@ export default function CongratsModal(props: {
 										</button>
 									</a>
 								</div>
-								{/* @TODO: add check leaderboard */}
 							</Dialog.Panel>
 						</Transition.Child>
 					</div>
