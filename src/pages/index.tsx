@@ -24,12 +24,13 @@ export default function CrosswordPage({
 		<div className="animate__animated animate__fadeIn">
 			<NavBar user={session ? session.user : null} />
 			<div className="border-b border-neutral-200 dark:border-neutral-700 transition-colors py-4 px-5">
-				<span className="text-5xl pl-5 font-black items-center border-l-8 border-black dark:border-neutral-500">
+				<span className="md:text-5xl text-4xl pl-5 font-black items-center border-l-8 border-black dark:border-neutral-500">
 					{crossword !== 'null'
 						? JSON.parse(crossword).title
 						: 'No Crosswords Yet'}
 				</span>
-				<span className="px-3 text-lg font-light">
+				<br className="md:hidden"/>
+				<span className="md:px-3 md:py-0 py-2 md:text-lg text-base font-light">
 					C. Wu '24 and D. Zhang '25
 				</span>
 			</div>

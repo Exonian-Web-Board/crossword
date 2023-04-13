@@ -50,7 +50,7 @@ export default function CrosswordComponent({
 	);
 
 	return (
-		<div className="flex flex-row justify-center py-12">
+		<div className="flex flex-row justify-center md:py-12 py-5 flex-wrap">
 			<CrosswordProvider
 				data={ipuz}
 				onCrosswordCorrect={(isCorrect) => {
@@ -81,15 +81,15 @@ export default function CrosswordComponent({
 				ref={cRef}
 			>
 				<div
-					className="w-2/5 px-5 animate__animated animate__fadeIn"
+					className="md:w-2/5 w-11/12 md:py-0 py-3 px-5 animate__animated animate__fadeIn"
 					style={{ animationDuration: '1500ms' }}
 				>
 					<CrosswordGrid />
 				</div>
-				<div className="w-1/5 px-2 text-sm">
+				<div className="md:w-1/5 md:py-0 py-3 w-11/12 px-2 text-sm">
 					<DirectionClues direction="across" />
 				</div>
-				<div className="w-1/5 px-2 text-sm">
+				<div className="md:w-1/5 md:py-0 py-3 w-11/12 px-2 text-sm">
 					<DirectionClues direction="down" />
 				</div>
 			</CrosswordProvider>
