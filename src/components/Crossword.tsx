@@ -6,6 +6,7 @@ import {
 	useIpuz,
 } from '@jaredreisinger/react-crossword';
 import { Ref, useCallback, useState } from 'react';
+import { useTheme } from 'next-themes';
 
 export default function CrosswordComponent({
 	data,
@@ -49,10 +50,32 @@ export default function CrosswordComponent({
 		[]
 	);
 
+	const { theme, systemTheme, setTheme } = useTheme();
+	var crosswordTheme = {};
+
+	if (theme === 'light') {
+		crosswordTheme = {};
+	}
+	else {
+		crosswordTheme = {
+			cellBackground: 'rgb(31, 33, 38)',
+
+			textColor: '#e5e8ec',
+			numberColor: '#e5e8ec',
+
+			focusBackground: '#F52614',
+			highlightBackground: '#A81B0D',
+
+			cellBorder: 'rgb(17, 19, 24)',
+			gridBackground: 'rgb(17, 19, 24)',
+		}
+	}
+
 	return (
-		<div className="flex flex-row justify-center md:py-12 py-5 flex-wrap">
+		<div className="flex flex-row justify-center md:py-12 py-5 flex-wrap transition-colors">
 			<CrosswordProvider
 				data={ipuz}
+				theme={crosswordTheme}
 				onCrosswordCorrect={(isCorrect) => {
 					if (isCorrect) {
 						setCorrect(isCorrect);
