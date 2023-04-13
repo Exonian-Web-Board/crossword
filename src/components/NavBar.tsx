@@ -1,10 +1,10 @@
 import { User } from 'next-auth';
 import { signIn, signOut } from 'next-auth/react';
-import { FiLogOut } from 'react-icons/fi';
-import { HiSun, HiMoon } from 'react-icons/hi';
-import { BsPersonFill } from 'react-icons/bs';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
+import { BsPersonFill } from 'react-icons/bs';
+import { FiLogOut } from 'react-icons/fi';
+import { HiMoon, HiSun } from 'react-icons/hi';
 
 export default function NavBar({ user }: { user: User | null }) {
 	const [mounted, setMounted] = useState(false);
@@ -87,7 +87,7 @@ export default function NavBar({ user }: { user: User | null }) {
 								signIn('azure-ad');
 							}}
 						>
-							<BsPersonFill className="h-6 w-6"/>
+							<BsPersonFill className="h-6 w-6" />
 						</button>
 					)}
 				</div>
