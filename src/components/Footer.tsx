@@ -16,25 +16,25 @@ export default function Footer() {
 					</h5>
 					<p className="md:text-sm text-xs">
 						The Exonian Crossword was launched in 2023 by the 145th
-						Exonian Web Board (developed by Byran Huang '25 and Eric
-						Li '25, in alphabetical order). This bi-weekly 5 x 5
-						crossword has a school leaderboard and many
-						customization options. The Web Board strives to improve
-						this website and we would love to hear your feedback:
+						Exonian Web Board (Catherine Wu '24, Byran Huang '25,
+						Eric Li '25, Ugo Barrah '24, Chengyue Zhang '24,
+						developed by Byran Huang '25, Eric Li '25). This
+						bi-weekly 5 x 5 crossword has a school leaderboard and
+						many customization options. The Web Board strives to
+						improve this website and we would love to hear your
+						feedback:&nbsp;
 						<a
 							href="mailto:yhuang4@exeter.edu"
 							className="text-gray-500 dark:text-neutral-400"
 						>
-							{' '}
-							yhuang4@exeter.edu
+							yhuang4@exeter.edu&nbsp;
 						</a>
 						and
 						<a
 							href="mailto:xli5@exeter.edu"
 							className="text-gray-500 dark:text-neutral-400"
 						>
-							{' '}
-							xli5@exeter.edu
+							&nbsp;xli5@exeter.edu
 						</a>
 					</p>
 				</div>
