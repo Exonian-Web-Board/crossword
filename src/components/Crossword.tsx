@@ -5,8 +5,8 @@ import {
 	DirectionClues,
 	useIpuz,
 } from '@jaredreisinger/react-crossword';
-import { Ref, useCallback, useState } from 'react';
 import { useTheme } from 'next-themes';
+import { Ref, useCallback, useState } from 'react';
 
 export default function CrosswordComponent({
 	data,
@@ -53,8 +53,7 @@ export default function CrosswordComponent({
 
 	if (theme === 'light') {
 		crosswordTheme = {};
-	}
-	else {
+	} else {
 		crosswordTheme = {
 			cellBackground: 'rgb(31, 33, 38)',
 
@@ -66,7 +65,7 @@ export default function CrosswordComponent({
 
 			cellBorder: 'rgb(17, 19, 24)',
 			gridBackground: 'rgb(17, 19, 24)',
-		}
+		};
 	}
 
 	return (

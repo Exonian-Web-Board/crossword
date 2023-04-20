@@ -25,10 +25,9 @@ export default function LeaderboardPage({
 export const getServerSideProps: GetServerSideProps = async () => {
 	await dbConnect();
 
-	const leaderboard = await User.find(
-		{ completed: { $gt: 0 } },
-		{ sort: { completed: -1 } }
-	).select('name completed today timeToday');
+	const leaderboard = await User.find({ completed: { $gt: 0 } })
+		.select('name completed today timeToday')
+		.sort({ timeToday: 1 });
 
 	return {
 		props: {

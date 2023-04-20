@@ -1,7 +1,6 @@
 import { useLocalStorage } from '@/hooks/useLocalStorage';
-import { Fragment, useRef, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
-import { ExclamationTriangleIcon } from '@heroicons/react/24/outline';
+import { Fragment, useRef, useState } from 'react';
 import { TbConfetti } from 'react-icons/tb';
 
 export default function CongratsModal(props: {
@@ -62,7 +61,9 @@ export default function CongratsModal(props: {
 											</Dialog.Title>
 											<div className="mt-2">
 												<p className="text-sm text-gray-500">
-													Congrats for solving today's crossword. Come back in a few days for more!
+													Congrats for solving today's
+													crossword. Come back in a
+													few days for more!
 												</p>
 											</div>
 										</div>
