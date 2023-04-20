@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react';
 import 'animate.css';
 import { SessionProvider } from 'next-auth/react';
 import { ThemeProvider } from 'next-themes';
@@ -18,6 +19,8 @@ export default function App({ Component, pageProps }: AppProps) {
 			<SessionProvider>
 				<ThemeProvider attribute="class">
 					<Component {...pageProps} />
+
+					<Analytics />
 				</ThemeProvider>
 			</SessionProvider>
 		</>
