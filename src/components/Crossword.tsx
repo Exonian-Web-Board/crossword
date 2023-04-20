@@ -77,8 +77,10 @@ export default function CrosswordComponent({
 					if (isCorrect) {
 						setCorrect(isCorrect);
 
-						if (localStorage.getItem('completed') === 'true')
+						if (localStorage.getItem('completed') === 'true') {
+							setModalShow(true);
 							return;
+						}
 
 						const requestOptions = {
 							method: 'POST',
