@@ -1,9 +1,17 @@
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { useEffect } from 'react';
 
-function Timer({ start }: { start: boolean }) {
+function Timer({ start, reset }: { start: boolean; reset: boolean }) {
 	const [time, setTime] = useLocalStorage('time', 0);
-	const [completed] = useLocalStorage('completed', false);
+	const [completed, setCompleted] = useLocalStorage('completed', false);
+
+	useEffect(() => {
+		if (reset) {
+			localStorage.clear();
+			setTime(0);
+			setCompleted(false);
+		}
+	}, [reset]);
 
 	useEffect(() => {
 		if (start && !localStorage.getItem('timerStop')) {
@@ -15,7 +23,8 @@ function Timer({ start }: { start: boolean }) {
 
 	return (
 		<>
-			{new Date(time * 1000).toISOString().substring(14, 19)}&nbsp;
+			{new Date(Number(time) * 1000).toISOString().substring(14, 19)}
+			&nbsp;
 			<p>{completed && "*You've completed today's puzzle"}&nbsp;</p>
 		</>
 	);
