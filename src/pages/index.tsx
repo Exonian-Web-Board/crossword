@@ -65,6 +65,7 @@ export default function CrosswordPage({
 					setCorrect={setCorrect}
 					setModalShow={setModalShow}
 					cRef={crosswordRef}
+					useStorage={reset}
 				/>
 			) : (
 				<div className="text-center text-2xl font-bold py-10">
