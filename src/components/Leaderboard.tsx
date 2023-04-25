@@ -2,10 +2,13 @@ import 'animate.css';
 import { BiStopwatch } from 'react-icons/bi';
 
 export default function LeaderBoard({ data }: { data: string }) {
-	var leaderboard = JSON.parse(data);
+	const leaderboard = JSON.parse(data);
 
 	return (
 		<div className="flex justify-center items-center gap-5 flex-col p-5">
+			{leaderboard.length === 0 && (
+				<h1>Leaderboard is empty! Claim the throne!</h1>
+			)}
 			{leaderboard.map((user: any) => (
 				<div
 					key={user._id}
@@ -24,9 +27,11 @@ export default function LeaderBoard({ data }: { data: string }) {
 							<div className="pr-1">
 								<BiStopwatch className="h-5 w-5" />
 							</div>
-							{new Date(user.timeToday * 1000)
-								.toISOString()
-								.substring(14, 19)}{' '}
+							{user.timeToday
+								? new Date(user.timeToday * 1000)
+										.toISOString()
+										.substring(14, 19)
+								: 'N/A'}{' '}
 						</div>
 						<i>
 							<div>

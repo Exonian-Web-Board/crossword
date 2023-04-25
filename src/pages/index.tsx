@@ -10,15 +10,27 @@ import { CrosswordProviderImperative } from '@jaredreisinger/react-crossword';
 import 'animate.css';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import { useSession } from 'next-auth/react';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export default function CrosswordPage({
 	crossword,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
 	const { data: session } = useSession();
+	const [reset, setReset] = useState(false);
 	const [correct, setCorrect] = useState(false);
 	const [modalShow, setModalShow] = useState(false);
 	const crosswordRef = useRef<CrosswordProviderImperative>(null);
+
+	useEffect(() => {
+		const guesses = localStorage.getItem('guesses');
+		if (guesses) {
+			const date = new Date(JSON.parse(guesses).date);
+
+			if (date < new Date(JSON.parse(crossword).date)) {
+				setReset(true);
+			}
+		}
+	}, []);
 
 	return (
 		<div className="animate__animated animate__fadeIn">
@@ -34,7 +46,11 @@ export default function CrosswordPage({
 					{JSON.parse(crossword).authors}
 				</span>
 			</div>
-			<GameNav correct={correct} crosswordRef={crosswordRef} />
+			<GameNav
+				correct={correct}
+				crosswordRef={crosswordRef}
+				reset={reset}
+			/>
 			{correct && (
 				<>
 					<CongratsModal
@@ -49,6 +65,7 @@ export default function CrosswordPage({
 					setCorrect={setCorrect}
 					setModalShow={setModalShow}
 					cRef={crosswordRef}
+					useStorage={reset}
 				/>
 			) : (
 				<div className="text-center text-2xl font-bold py-10">

@@ -13,11 +13,13 @@ export default function CrosswordComponent({
 	setCorrect,
 	setModalShow,
 	cRef,
+	useStorage,
 }: {
 	data: string;
 	setCorrect: (isCorrect: boolean) => void;
 	setModalShow: (isCorrect: boolean) => void;
 	cRef: Ref<CrosswordProviderImperative>;
+	useStorage: boolean;
 }) {
 	let [guesses] = useState<string[][]>([
 		['#', '#', '#', '#', '#'],
@@ -71,6 +73,7 @@ export default function CrosswordComponent({
 	return (
 		<div className="flex flex-row justify-center md:py-12 py-5 flex-wrap transition-colors">
 			<CrosswordProvider
+				useStorage={useStorage}
 				data={ipuz}
 				theme={crosswordTheme}
 				onCrosswordCorrect={(isCorrect) => {
