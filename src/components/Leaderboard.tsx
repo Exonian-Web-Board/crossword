@@ -12,20 +12,20 @@ export default function LeaderBoard({ data }: { data: string }) {
 			{leaderboard.map((user: any) => (
 				<div
 					key={user._id}
-					className="px-5 w-11/12 md:w-1/3  bg-slate-100 dark:bg-slate-800 shadow-lg rounded-xl animate__animated animate_fadeIn"
+					className="px-5 w-11/12 md:w-1/3 bg-slate-100 dark:bg-gradient-to-br from-zinc-900 to-zinc-800 shadow-lg rounded-xl animate__animated animate_fadeIn"
 				>
 					<div className="px-2 py-5">
 						<div className="flex w-full justify-between">
-							<span className="font-black text-3xl">
+							<span className="font-black md:text-3xl text-2xl">
 								{user.name}
 							</span>
-							<span className="text-3xl">
+							<span className="md:text-3xl text-2xl">
 								{user.today ? '✅' : '❌'}
 							</span>
 						</div>
-						<div className="flex items-center">
+						<div className="flex items-center md:text-base text-sm">
 							<div className="pr-1">
-								<BiStopwatch className="h-5 w-5" />
+								<BiStopwatch className="md:h-5 md:w-5 h-4 w-4" />
 							</div>
 							{user.timeToday
 								? new Date(user.timeToday * 1000)
@@ -35,7 +35,7 @@ export default function LeaderBoard({ data }: { data: string }) {
 						</div>
 						<i>
 							<div>
-								<span className="font-light">
+								<span className="font-light md:text-base text-sm">
 									Completed: {user.completed}
 								</span>
 							</div>
