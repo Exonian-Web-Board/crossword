@@ -36,6 +36,11 @@ export default function NavBar({ user }: { user: User | null }) {
 							</span>
 						</div>
 					</a>
+					<a href="https://www.theexonian.net"
+						className="text-white px-2 font-medium text-lg py-1"
+					>
+						The Exonian
+					</a>
 					<a
 						href="/leaderboard"
 						className="text-white px-2 font-medium text-lg py-1"
