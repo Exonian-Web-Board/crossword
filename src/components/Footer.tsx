@@ -17,7 +17,7 @@ export default function Footer() {
 					<p className="md:text-sm text-xs">
 						The Exonian Crossword was launched in 2023 by the 145th
 						Exonian Web Board (Catherine Wu '24, Byran Huang '25,
-						Eric Li '25, Ugo Barrah '24, Chengyue Zhang '24). This
+						Eric Li '25, Ugo Barrah '24, Chengyue Zhang '24). Ideation by Lianna Yang '24. This
 						bi-weekly 5 x 5 crossword features a leaderboard. The Web Board strives to
 						improve this website and we would love to hear your
 						feedback:{' '}
