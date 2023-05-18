@@ -1,6 +1,6 @@
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { Dialog, Transition } from '@headlessui/react';
-import { Fragment, useRef, useState } from 'react';
+import { Fragment, useRef, useState,  } from 'react';
 import { TbConfetti } from 'react-icons/tb';
 
 export default function CongratsModal(props: {
@@ -31,7 +31,7 @@ export default function CongratsModal(props: {
 				>
 					<div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
 				</Transition.Child>
-
+				<audio autoPlay src="/music/crosswordFinish.mp3"></audio>
 				<div className="fixed inset-0 z-10 overflow-y-auto">
 					<div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
 						<Transition.Child
