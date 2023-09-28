@@ -43,7 +43,7 @@ export default function CrosswordPage({
 				</span>
 				<br className="md:hidden" />
 				<span className="md:px-3 md:py-0 py-2 md:text-lg text-base font-light">
-					{JSON.parse(crossword).authors}
+					{JSON.parse(crossword).authors.join(', ')}
 				</span>
 			</div>
 			<GameNav
@@ -65,7 +65,7 @@ export default function CrosswordPage({
 					setCorrect={setCorrect}
 					setModalShow={setModalShow}
 					cRef={crosswordRef}
-					useStorage={reset}
+					useStorage={!reset}
 				/>
 			) : (
 				<div className="text-center text-2xl font-bold py-10">
