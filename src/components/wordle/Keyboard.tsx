@@ -1,43 +1,43 @@
-function KeyboardButton() {
-	return <button className="px-2 my-2">Q</button>;
+function KeyboardButton({ children }: { children: string }) {
+	return <button className="px-2 my-2 font-semibold">{children}</button>;
 }
 
 export default function Keyboard() {
 	return (
 		<div className="mx-1 flex-col items-center">
-			<div className="flex justify-center">
-				<KeyboardButton />
-				<KeyboardButton />
-				<KeyboardButton />
-				<KeyboardButton />
-				<KeyboardButton />
-				<KeyboardButton />
-				<KeyboardButton />
-				<KeyboardButton />
-				<KeyboardButton />
-				<KeyboardButton />
+			<div className="flex justify-center gap-x-2">
+				<KeyboardButton>Q</KeyboardButton>
+				<KeyboardButton>W</KeyboardButton>
+				<KeyboardButton>E</KeyboardButton>
+				<KeyboardButton>R</KeyboardButton>
+				<KeyboardButton>T</KeyboardButton>
+				<KeyboardButton>Y</KeyboardButton>
+				<KeyboardButton>U</KeyboardButton>
+				<KeyboardButton>I</KeyboardButton>
+				<KeyboardButton>O</KeyboardButton>
+				<KeyboardButton>P</KeyboardButton>
+			</div>
+			<div className="flex justify-center gap-x-1">
+				<KeyboardButton>A</KeyboardButton>
+				<KeyboardButton>S</KeyboardButton>
+				<KeyboardButton>D</KeyboardButton>
+				<KeyboardButton>F</KeyboardButton>
+				<KeyboardButton>G</KeyboardButton>
+				<KeyboardButton>H</KeyboardButton>
+				<KeyboardButton>J</KeyboardButton>
+				<KeyboardButton>K</KeyboardButton>
+				<KeyboardButton>L</KeyboardButton>
 			</div>
 			<div className="flex justify-center">
-				<button className="keyboard-button">a</button>
-				<button className="keyboard-button">s</button>
-				<button className="keyboard-button">d</button>
-				<button className="keyboard-button">f</button>
-				<button className="keyboard-button">g</button>
-				<button className="keyboard-button">h</button>
-				<button className="keyboard-button">j</button>
-				<button className="keyboard-button">k</button>
-				<button className="keyboard-button">l</button>
-			</div>
-			<div className="flex justify-center">
-				<button className="keyboard-button">Del</button>
-				<button className="keyboard-button">z</button>
-				<button className="keyboard-button">x</button>
-				<button className="keyboard-button">c</button>
-				<button className="keyboard-button">v</button>
-				<button className="keyboard-button">b</button>
-				<button className="keyboard-button">n</button>
-				<button className="keyboard-button">m</button>
-				<button className="keyboard-button">Enter</button>
+				<KeyboardButton>Enter</KeyboardButton>
+				<KeyboardButton>Z</KeyboardButton>
+				<KeyboardButton>X</KeyboardButton>
+				<KeyboardButton>C</KeyboardButton>
+				<KeyboardButton>V</KeyboardButton>
+				<KeyboardButton>B</KeyboardButton>
+				<KeyboardButton>N</KeyboardButton>
+				<KeyboardButton>M</KeyboardButton>
+				<KeyboardButton>Del</KeyboardButton>
 			</div>
 		</div>
 	);
