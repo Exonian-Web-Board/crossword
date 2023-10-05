@@ -1,8 +1,8 @@
 import CongratsModal from '@/components/CongratsModal';
-import CrosswordComponent from '@/components/Crossword';
 import Footer from '@/components/Footer';
-import GameNav from '@/components/GameNav';
 import NavBar from '@/components/NavBar';
+import CrosswordComponent from '@/components/crossword/Crossword';
+import GameNav from '@/components/crossword/GameNav';
 import dbConnect from '@/lib/mongoose';
 import { Crossword } from '@/models/Crossword';
 import { User } from '@/models/User';

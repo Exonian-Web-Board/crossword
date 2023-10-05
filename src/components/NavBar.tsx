@@ -36,7 +36,8 @@ export default function NavBar({ user }: { user: User | null }) {
 							</span>
 						</div>
 					</a>
-					<a href="https://www.theexonian.net"
+					<a
+						href="https://www.theexonian.net"
 						className="text-white px-2 font-medium text-lg py-1"
 					>
 						The Exonian
@@ -46,6 +47,12 @@ export default function NavBar({ user }: { user: User | null }) {
 						className="text-white px-2 font-medium text-lg py-1"
 					>
 						Leaderboard
+					</a>
+					<a
+						href="/wordle"
+						className="text-white px-2 font-medium text-lg py-1"
+					>
+						Wordle
 					</a>
 					<a
 						href="/#footer"
