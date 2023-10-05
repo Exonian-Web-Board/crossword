@@ -37,7 +37,12 @@ export default function NavBar({ user }: { user: User | null }) {
 						</div>
 					</a>
 					<a
-						href="https://www.theexonian.net"
+						href="/wordle"
+						className="text-white px-2 font-medium text-lg py-1"
+					>
+						Wordle
+					</a>
+					<a href="https://www.theexonian.net"
 						className="text-white px-2 font-medium text-lg py-1"
 					>
 						The Exonian
