@@ -1,8 +1,7 @@
 import Footer from '@/components/Footer';
 import NavBar from '@/components/NavBar';
 import Keyboard from '@/components/wordle/Keyboard';
-import TextBox from '@/components/wordle/TextBox';
-import TextRow from '@/components/wordle/TextRow';
+import Wordle from '@/components/wordle/Wordle';
 import dbConnect from '@/lib/mongoose';
 import 'animate.css';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
@@ -14,49 +13,62 @@ export default function WordlePage({}: InferGetServerSidePropsType<
 >) {
 	const { data: session } = useSession();
 	const [reset, setReset] = useState(false);
+	const answer = 'hello';
+	const [attempts, setAttempts] = useState(0);
+	const [guesses, setGuesses] = useState<string[]>(['', '', '', '', '']);
 
-	useEffect(() => {}, []);
+	function addLetterToGuess(key: string) {
+		if (guesses[attempts].length == 5) return;
+
+		setGuesses((prev) => {
+			const newGuesses = [...prev];
+			newGuesses[attempts] += key;
+			return newGuesses;
+		});
+	}
+
+	function submitGuess() {
+		if (guesses[attempts].length == 5) {
+			setAttempts((prev) => prev + 1);
+		}
+	}
+
+	function backspace() {
+		setGuesses((prev) => {
+			const newGuesses = [...prev];
+			newGuesses[attempts] = newGuesses[attempts].slice(
+				0,
+				newGuesses[attempts].length - 1
+			);
+			return newGuesses;
+		});
+	}
+
+	function handler(e: KeyboardEvent) {
+		const letters = 'abcdefghijklmnopqrstuvwxyz';
+
+		if (letters.includes(e.key)) {
+			addLetterToGuess(e.key);
+		} else if (e.key === 'Enter') {
+			submitGuess();
+		} else if (e.key === 'Backspace') {
+			backspace();
+		}
+	}
+
+	useEffect(() => {
+		window.addEventListener('keydown', handler, false);
+		return () => window.removeEventListener('keydown', handler, false);
+	}, [handler]);
+
+	useEffect(() => {
+		console.log(attempts, guesses);
+	}, [guesses]);
 
 	return (
 		<div className="animate__animated animate__fadeIn">
 			<NavBar user={session ? session.user : null} />
-			<div className="flex flex-col justify-center items-center ">
-				<TextRow>
-					<TextBox />
-					<TextBox />
-					<TextBox />
-					<TextBox />
-					<TextBox />
-				</TextRow>
-				<TextRow>
-					<TextBox />
-					<TextBox />
-					<TextBox />
-					<TextBox />
-					<TextBox />
-				</TextRow>
-				<TextRow>
-					<TextBox />
-					<TextBox />
-					<TextBox />
-					<TextBox />
-					<TextBox />
-				</TextRow>
-				<TextRow>
-					<TextBox />
-					<TextBox />
-					<TextBox />
-					<TextBox />
-					<TextBox />
-				</TextRow>
-				<TextRow>
-					<TextBox />
-					<TextBox />
-					<TextBox />
-					<TextBox />
-					<TextBox />
-				</TextRow>
-			</div>
+			<Wordle attempts={attempts} guesses={guesses} answer={answer} />
 
 			<div className="flex flex-col justify-center items-center ">
 				<Keyboard />
