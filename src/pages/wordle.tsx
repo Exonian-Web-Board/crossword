@@ -1,19 +1,14 @@
-import Footer from '@/components/Footer';
+import Footer from '@/components/crossword/Footer';
 import NavBar from '@/components/NavBar';
 import Keyboard from '@/components/wordle/Keyboard';
 import Wordle from '@/components/wordle/Wordle';
-import dbConnect from '@/lib/mongoose';
 import 'animate.css';
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 
-export default function WordlePage({}: InferGetServerSidePropsType<
-	typeof getServerSideProps
->) {
+export default function WordlePage() {
 	const { data: session } = useSession();
-	const [reset, setReset] = useState(false);
-	const answer = 'hello';
+	const answer = 'ewald';
 	const [attempts, setAttempts] = useState(0);
 	const [guesses, setGuesses] = useState<string[]>(['', '', '', '', '']);
 
@@ -78,11 +73,3 @@ export default function WordlePage({}: InferGetServerSidePropsType<
 		</div>
 	);
 }
-
-export const getServerSideProps: GetServerSideProps = async () => {
-	await dbConnect();
-
-	return {
-		props: {},
-	};
-};

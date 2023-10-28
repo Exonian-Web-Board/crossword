@@ -1,5 +1,5 @@
-import CongratsModal from '@/components/CongratsModal';
-import Footer from '@/components/Footer';
+import CongratsModal from '@/components/crossword/CongratsModal';
+import Footer from '@/components/crossword/Footer';
 import NavBar from '@/components/NavBar';
 import CrosswordComponent from '@/components/crossword/Crossword';
 import GameNav from '@/components/crossword/GameNav';

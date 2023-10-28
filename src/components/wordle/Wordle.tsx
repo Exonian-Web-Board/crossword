@@ -9,6 +9,12 @@ export default function Wordle({
 	attempts: number;
 	answer: string;
 }) {
+	if (guesses[attempts - 1] === answer) {
+		console.log('YOU WON');
+
+		return <h1>YOU WON</h1>;
+	}
+
 	return (
 		<div className="flex flex-col justify-center items-center ">
 			<TextRow

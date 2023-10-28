@@ -1,4 +1,4 @@
-import LeaderBoard from '@/components/Leaderboard';
+import LeaderBoard from '@/components/crossword/Leaderboard';
 import NavBar from '@/components/NavBar';
 import dbConnect from '@/lib/mongoose';
 import { User } from '@/models/User';
