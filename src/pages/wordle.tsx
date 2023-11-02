@@ -1,73 +1,72 @@
-import Footer from '@/components/crossword/Footer';
 import NavBar from '@/components/NavBar';
+import CongratsModal from '@/components/wordle/CongratsModal';
+import Footer from '@/components/crossword/Footer';
+import Form from '@/components/wordle/Form';
+import Guesses from '@/components/wordle/Guesses';
 import Keyboard from '@/components/wordle/Keyboard';
-import Wordle from '@/components/wordle/Wordle';
-import 'animate.css';
+import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 
-export default function WordlePage() {
+export default function Home() {
+	const [guesses, setGuesses] = useLocalStorage<string[]>('wordleGuesses', [
+		'',
+		'',
+		'',
+		'',
+		'',
+		'',
+	]);
+	const [show, setShow] = useState(false);
 	const { data: session } = useSession();
-	const answer = 'ewald';
-	const [attempts, setAttempts] = useState(0);
-	const [guesses, setGuesses] = useState<string[]>(['', '', '', '', '']);
-
-	function addLetterToGuess(key: string) {
-		if (guesses[attempts].length == 5) return;
-
-		setGuesses((prev) => {
-			const newGuesses = [...prev];
-			newGuesses[attempts] += key;
-			return newGuesses;
-		});
-	}
-
-	function submitGuess() {
-		if (guesses[attempts].length == 5) {
-			setAttempts((prev) => prev + 1);
-		}
-	}
-
-	function backspace() {
-		setGuesses((prev) => {
-			const newGuesses = [...prev];
-			newGuesses[attempts] = newGuesses[attempts].slice(
-				0,
-				newGuesses[attempts].length - 1
-			);
-			return newGuesses;
-		});
-	}
-
-	function handler(e: KeyboardEvent) {
-		const letters = 'abcdefghijklmnopqrstuvwxyz';
-
-		if (letters.includes(e.key)) {
-			addLetterToGuess(e.key);
-		} else if (e.key === 'Enter') {
-			submitGuess();
-		} else if (e.key === 'Backspace') {
-			backspace();
-		}
-	}
+	const [attempt, setAttempt] = useLocalStorage('wordleAttempt', 0);
+	const answer = 'EWALD';
 
 	useEffect(() => {
-		window.addEventListener('keydown', handler, false);
-		return () => window.removeEventListener('keydown', handler, false);
-	}, [handler]);
+		if (
+			Date.now() - Number(localStorage.getItem('completeTime')) >
+			10 * 1000
+		) {
+			setGuesses(['', '', '', '', '', '']);
+			setAttempt(0);
+			localStorage.removeItem('completeTime');
+		}
+	}, []);
 
-	useEffect(() => {
-		console.log(attempts, guesses);
-	}, [guesses]);
+	const isWinner = attempt > 0 && guesses[attempt - 1] === answer;
+
+	if (isWinner && !localStorage.getItem('completeTime')) {
+		localStorage.setItem('completeTime', Date.now().toString());
+		setShow(true);
+	}
+
+	const isLoser = attempt >= 6 && guesses[attempt - 1] !== answer;
+	if (isLoser) {
+		console.log('L');
+	}
 
 	return (
 		<div className="animate__animated animate__fadeIn">
 			<NavBar user={session ? session.user : null} />
-			<Wordle attempts={attempts} guesses={guesses} answer={answer} />
 
-			<div className="flex flex-col justify-center items-center ">
-				<Keyboard />
+			<CongratsModal
+				show={show}
+				onHide={() => {
+					setShow(false);
+				}}
+				answer={answer}
+				guesses={guesses}
+			/>
+
+			<div className="grid place-items-center">
+				<Form
+					setGuesses={setGuesses}
+					attempt={attempt}
+					setAttempt={setAttempt}
+				/>
+				<Guesses guesses={guesses} answer={answer} />
 			</div>
+			<Keyboard />
 
 			<Footer />
 		</div>
