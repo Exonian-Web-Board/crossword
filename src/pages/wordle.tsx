@@ -25,7 +25,7 @@ export default function Home() {
 	useEffect(() => {
 		if (
 			Date.now() - Number(localStorage.getItem('completeTime')) >
-			10 * 1000
+			60 * 60 * 1000
 		) {
 			setGuesses(['', '', '', '', '', '']);
 			setAttempt(0);
@@ -42,7 +42,7 @@ export default function Home() {
 
 	const isLoser = attempt >= 6 && guesses[attempt - 1] !== answer;
 	if (isLoser) {
-		console.log('L');
+		alert('Oops! You lose! Teehee!');
 	}
 
 	return (

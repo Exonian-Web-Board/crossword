@@ -1,6 +1,7 @@
 import { Dialog, Transition } from '@headlessui/react';
-import { Fragment, useRef, useState } from 'react';
+import { Fragment, useCallback, useEffect, useRef, useState } from 'react';
 import { TbConfetti } from 'react-icons/tb';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 export default function CongratsModal(props: {
 	onHide: () => void;
@@ -8,26 +9,38 @@ export default function CongratsModal(props: {
 	answer: string;
 	guesses: string[];
 }) {
-	let string = `Wordle ${props.guesses.filter((item) => item).length}/6\n`;
+	useEffect(() => {
+		let string = `Wordle ${
+			props.guesses.filter((item) => item).length
+		}/6\n`;
 
-	for (let i = 0; i < props.guesses.length; i++) {
-		for (let k = 0; k < props.guesses[i].length; k++) {
-			let guessChar = props.guesses[i][k];
-			let answerChar = props.answer[k];
+		for (let i = 0; i < props.guesses.length; i++) {
+			for (let k = 0; k < props.guesses[i].length; k++) {
+				let guessChar = props.guesses[i][k];
+				let answerChar = props.answer[k];
 
-			if (guessChar === answerChar) {
-				string += '🟩';
-			} else if (props.answer.includes(guessChar)) {
-				string += '🟨';
-			} else {
-				string += '⬛';
+				if (guessChar === answerChar) {
+					string += '🟩';
+				} else if (props.answer.includes(guessChar)) {
+					string += '🟨';
+				} else {
+					string += '⬛';
+				}
 			}
+
+			string += '\n';
 		}
 
-		string += '\n';
-	}
+		setValue(string);
+	}, [props.guesses]);
 
 	const [open, setOpen] = useState(true);
+	const [value, setValue] = useState('');
+	const [copied, setCopied] = useState(false);
+
+	const onCopy = useCallback(() => {
+		setCopied(true);
+	}, []);
 
 	const cancelButtonRef = useRef(null);
 
@@ -72,17 +85,22 @@ export default function CongratsModal(props: {
 												</p>
 											</div>
 											<div className="mt-2">
-												<button
-													type="button"
-													className="rounded-full bg-green-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"
-													onClick={() => {
-														navigator.clipboard.writeText(
-															string
-														);
-													}}
+												<CopyToClipboard
+													onCopy={onCopy}
+													text={value}
 												>
-													Share Stats
-												</button>
+													<button
+														type="button"
+														className="rounded-full bg-green-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"
+														onClick={() => {
+															alert(
+																'Copied to clipboard!'
+															);
+														}}
+													>
+														Share Stats
+													</button>
+												</CopyToClipboard>
 											</div>
 										</div>
 									</div>
