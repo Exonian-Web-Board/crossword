@@ -1,13 +1,12 @@
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { Dialog, Transition } from '@headlessui/react';
-import { Fragment, useRef, useState,  } from 'react';
+import { Fragment, useRef, useState } from 'react';
 import { TbConfetti } from 'react-icons/tb';
 
 export default function CongratsModal(props: {
 	onHide: () => void;
 	show: boolean;
 }) {
-	const [time] = useLocalStorage('time', 0);
 	const [open, setOpen] = useState(true);
 
 	const cancelButtonRef = useRef(null);

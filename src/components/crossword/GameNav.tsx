@@ -1,4 +1,4 @@
-import Timer from '@/components/Timer';
+import Timer from '@/components/crossword/Timer';
 import { CrosswordProviderImperative } from '@jaredreisinger/react-crossword';
 import { Ref } from 'react';
 
