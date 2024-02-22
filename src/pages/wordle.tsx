@@ -20,7 +20,7 @@ export default function Home() {
 	const [show, setShow] = useState(false);
 	const { data: session } = useSession();
 	const [attempt, setAttempt] = useLocalStorage('wordleAttempt', 0);
-	const answer = 'BYRAN';
+	const answer = 'SMURF';
 
 	useEffect(() => {
 		if (
